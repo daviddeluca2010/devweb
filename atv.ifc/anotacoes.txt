@@ -1,0 +1,31 @@
+1-abriu o body duas vezes 
+2-a tag <p> estava dentro da tag <h3> 
+3-a tag <p> estava dentro da tag <h3> 
+4-houve um erro na tag <p> pois a tag <strong> que esta dentro da tag <p> não estava fechada 
+5-a tag <strong> não estava fechada 
+6-a tag <section> foi fechada mas a tag <strong> não havia sido fechada
+7-
+8-
+9-
+10-
+11-
+12-
+13-
+14-
+15-
+16-
+17-
+18-
+19-
+20-
+21-
+22-
+23-
+24-
+25-
+26-
+27-
+28-
+29-
+30-
+31-
