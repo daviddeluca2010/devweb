@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        color: inherit;
+        list-style: none;
+        text-decoration: none;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #17243e;
+        background: #fff;
+      }
+      button,
+      a {
+        font: inherit;
+      }
+      .container {
+        width: min(1400px, 91%);
+        margin: auto;
+      }
+      header {
+        background: white;
+      }
+      .topo {
+        min-height: 96px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+      }
+      .logo {
+        font-weight: 800;
+        font-size: 25px;
+        text-decoration: none;
+        color: #17243e;
+      }
+      .logo img {
+        width: 155px;
+        height: 48px;
+        object-fit: contain;
+        display: block;
+      }
+      .topo h1,
+      .topo p {
+        margin: 0;
+      }
+      .menu {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .menu a {
+        color: #536078;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .menu a:hover {
+        color: #1763f5;
+      }
+      .botao {
+        display: inline-block;
+        border: 0;
+        background: #1763f5;
+        color: white;
+        padding: 18px 33px;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .botao:hover {
+        background: #064bd1;
+      }
+      .banner {
+        min-height: 490px;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(10, 27, 54, 0.87),
+            rgba(10, 27, 54, 0.24)
+          ),
+          url("https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1800&q=85")
+            center/cover;
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+      .banner h1 {
+        font-size: clamp(34px, 4vw, 58px);
+        line-height: 1.12;
+        margin: 0 0 34px;
+        max-width: 680px;
+      }
+      .banner p {
+        font-size: 20px;
+        margin: 14px 0;
+      }
+      .banner .botao {
+        margin-top: 30px;
+      }
+      .programacao {
+        padding: 48px 0 90px;
+      }
+      .programacao h2 {
+        font-size: 34px;
+        margin: 0;
+      }
+      .eventos {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+      .eventos li {
+        overflow: hidden;
+      }
+      .eventos li img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+      }
+      .eventos li h3 {
+        font-size: 21px;
+        margin: 20px 0 8px;
+      }
+      .eventos li p {
+        color: #647087;
+        line-height: 1.6;
+        margin: 0 0 18px;
+      }
+      .eventos li a {
+        color: #1763f5;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .sobre {
+        background: #f4f7fc;
+        padding: 55px 4.5% 55px max(4.5%, calc((100% - 1400px) / 2));
+      }
+      .sobre p {
+        color: #56647a;
+        line-height: 1.8;
+        max-width: 800px;
+      }
+      footer {
+        background: #14233d;
+        color: #fff;
+        padding: 25px 0;
+        text-align: center;
+      }
+      .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        background: rgba(13, 25, 46, 0.58);
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+      .overlay[hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container topo">
+      <h1>
+        <a class="logo" href="#inicio"
+          ><img
+            src="https://placehold.co/155x48/ffffff/17243e?text=EVENTO"
+            alt="Evento"
+        /></a>
+      </h1>
+      <ul class="menu">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#programacao">Programação</a></li>
+        <li><a href="#sobre">Sobre o evento</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <p><a class="botao" href="#inscricao">Inscreva-se</a></p>
+    </header>
+
+    <main>
+      <section class="banner" id="inicio">
+        <div class="container">
+          <h1>Congresso de<br />Tecnologia e Inovação</h1>
+          <p>▦ 15 a 17 de novembro de 2026</p>
+          <p>♦ Centro de Convenções</p>
+          <p><a class="botao" href="#inscricao">Faça sua inscrição</a></p>
+        </div>
+      </section>
+
+      <section class="programacao container" id="programacao">
+        <h2>Programação</h2>
+        <ul class="eventos">
+          <li>
+            <img
+              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=85"
+              alt="Participantes em um congresso de tecnologia"
+            />
+            <h3>15 de Novembro</h3>
+            <p>
+              Abertura do congresso, palestras sobre inovação e tendências
+              tecnológicas.
+            </p>
+            <p><a href="#sobre">Saiba mais →</a></p>
+          </li>
+          <li>
+            <img
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=85"
+              alt="Pessoas colaborando com computadores"
+            />
+            <h3>16 de Novembro</h3>
+            <p>
+              Oficinas práticas, desenvolvimento web e inteligência artificial.
+            </p>
+            <p><a href="#sobre">Saiba mais →</a></p>
+          </li>
+          <li>
+            <img
+              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&q=85"
+              alt="Ambiente de encontro e troca de experiências"
+            />
+            <h3>17 de Novembro</h3>
+            <p>
+              Apresentação de projetos, networking e encerramento do evento.
+            </p>
+            <p><a href="#sobre">Saiba mais →</a></p>
+          </li>
+        </ul>
+      </section>
+      <section class="sobre" id="sobre">
+        <h3>Sobre o evento</h3>
+        <p>
+          Três dias para compartilhar conhecimentos, descobrir tendências e
+          conectar pessoas interessadas em tecnologia, criatividade e inovação.
+        </p>
+      </section>
+    </main>
+    <footer id="contato">
+      <p>Congresso de Tecnologia e Inovação · 2026</p>
+    </footer>
+    <div class="base-modal">
+      <section>
+        <h2>
+            Confirme a entrada
+        </h2>
+
+        <form action="#">
+            <p>
+                <label for="ano">Ano de nascimento: </label>
+                <input type="number" id="ano">
+            </p>
+        </form>
+
+
+        <p>
+            <button class="sair" onclick="sair()" type="button">Sair</button>
+            <button class="entrar" onclick="entrar()" type="button">Entrar</button>
+        </p>
+      </section>
+    </div>
+    <style>
+      div.base-modal {
+        position: absolute;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.644);
+        height: 100%;
+        width: 100%;
+        backdrop-filter: blur(4px);
+      }
+      .base-modal section {
+        width: 25vw;
+        height: 15vw;
+        margin: 10vw auto;
+        background-color: white;
+        border: 5px solid #064bd1;
+        border-radius: 15px;
+        text-align: center;
+      }
+      .base-modal h2{
+        margin-bottom: 1.4vw;
+        font-size: 1.9rem;
+        font-weight: 800;
+        padding-top: 1.3vw;
+      }
+      .entrar{
+        background: #064bd1;
+        color: white;
+        font-weight: 700;
+        border: none;
+        padding: 1vw 3.2vw;
+        margin: 3vw 0.5vw;
+        border-radius: 13px;
+        transition: background 5s ease;
+      }
+      .entrar:hover{
+        background: linear-gradient(90deg, #064bd1, #062768);
+      }
+      .sair{
+        background-color: whitesmoke;
+        color: gray;
+        font-weight: 700;
+        border: 2px solid gray;
+        padding: 1vw 3.2vw;
+        border-radius: 13px;
+      }
+    </style>
+
+    <script>
+      function entrar() {
+        //console.log("Hello world js!!");
+        let janela = document.querySelector("div.base-modal");
+        let ano = parseInt(document.querySelector("#ano").value);
+        console.log(ano);
+
+        
+
+        if(2026 - ano >= 18){
+            janela.style.display = "none";
+        }
+        else{
+            window.location = "https://8.animaneco.com.br/";
+        }
+      }
+      function sair() {
+        
+      }
+    </script>
+  </body>
+</html>
